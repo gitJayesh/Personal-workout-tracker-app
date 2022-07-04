@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { listUsers } from "../../action/userAction";
+import { listUsers, deleteUser } from "../../action/userAction";
 const UserListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
@@ -11,14 +11,23 @@ const UserListScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());
     } else {
       history.push("/login");
     }
-  }, [dispatch, history]);
+  }, [dispatch, history, successDelete, userInfo]);
   console.log(users);
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure ")) {
+      console.log(dispatch(deleteUser(id)));
+    }
+  };
   return (
     <>
       <h2>Users</h2>
@@ -48,14 +57,17 @@ const UserListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <Link to={`/user/${user.id}/edit`}>
+                  <Link to={`/admin/user/${user.id}/edit`}>
                     <button className="btn bg-light">
                       <i className="fas fa-edit"></i>
                     </button>
-                    <button className="btn btn-sm bg-light">
-                      <i className="fas fa-trash"></i>
-                    </button>
                   </Link>
+                  <button
+                    className="btn"
+                    onClick={() => deleteHandler(user._id)}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
                 </td>
               </tr>
             ))}
