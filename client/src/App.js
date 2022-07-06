@@ -9,18 +9,19 @@ import Login from "./Componets/Auth/Login";
 import WorkoutDescScreen from "./Componets/screens/WorkoutDescScreen";
 import UserListScreen from "./Componets/Admin/UserListScreen";
 import Dashboard from "./Componets/Auth/Dashboard";
-
+import UserEditScreen from "./Componets/Admin/UserEditScreen";
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar title1="WokeF" title2="t" />
         <Routes>
-          <Route exact path="/home" element={<Homescreen />} />
+          <Route exact path="/" element={<Homescreen />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Dashboard />} />
           <Route path="/admin/userlist" element={<UserListScreen />} />
+          <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
           <Route path="/workout/:id" element={<WorkoutDescScreen />} />
         </Routes>
         <Footer />

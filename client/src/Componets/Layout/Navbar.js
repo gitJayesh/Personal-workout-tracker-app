@@ -48,7 +48,7 @@ const Navbar = ({ title1, icon, title2 }) => {
 
   return (
     <nav className="navbar bg-black navbar-fixed">
-      <Link to="/home">
+      <Link to="/">
         <h1>
           {title1}
           <i className={icon}></i>

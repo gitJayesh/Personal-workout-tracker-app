@@ -44,6 +44,7 @@ const Dashboard = () => {
     } else {
       dispatch(updateUserProfile({ id: user._id, name, email, password }));
       // Dispatch update profile
+      console.log();
     }
   };
 

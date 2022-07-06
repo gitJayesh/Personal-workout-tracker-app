@@ -10,10 +10,10 @@ const Login = ({ history, location }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
   // const redirect = location.search ? location.search.split("=")[1] : "/";
-  console.log(location);
+  //console.log(location);
   useEffect(() => {
     if (userInfo) {
-      navigate("/home");
+      navigate("/");
     }
   }, [history, userInfo, navigate]);
   const submitForm = (e) => {
@@ -36,7 +36,7 @@ const Login = ({ history, location }) => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          // required
+            // required
           />
         </div>
         <div className="form-group">
@@ -46,7 +46,7 @@ const Login = ({ history, location }) => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          // required
+            // required
           />
         </div>
         <input
