@@ -10,6 +10,8 @@ import WorkoutDescScreen from "./Componets/screens/WorkoutDescScreen";
 import UserListScreen from "./Componets/Admin/UserListScreen";
 import Dashboard from "./Componets/Auth/Dashboard";
 import UserEditScreen from "./Componets/Admin/UserEditScreen";
+import WorkoutListScreen from "./Componets/Admin/WorkoutListScreen";
+import WorkoutEditScreen from "./Componets/Admin/workoutEditScreen";
 function App() {
   return (
     <Router>
@@ -21,8 +23,13 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Dashboard />} />
           <Route path="/admin/userlist" element={<UserListScreen />} />
+          <Route path="/admin/workoutlist" element={<WorkoutListScreen />} />
           <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
           <Route path="/workout/:id" element={<WorkoutDescScreen />} />
+          <Route
+            path="/admin/workout/:id/edit"
+            element={<WorkoutEditScreen />}
+          />
         </Routes>
         <Footer />
       </div>

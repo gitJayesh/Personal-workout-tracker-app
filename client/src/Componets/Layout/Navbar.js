@@ -16,16 +16,17 @@ const Navbar = ({ title1, icon, title2 }) => {
 
   const authLinks = (
     <Fragment>
-      {userInfo && userInfo.isAdmin && (
+      {userInfo && userInfo.isAdmin ? (
         <li>
           <Link to="/admin/userlist">Users</Link>
-          {/* <Link to="/admin/productList">Products </Link>
-          <Link to="/admin/ordertList">Orders</Link> */}
+          <Link to="/admin/workoutList">Workouts </Link>
+          {/* <Link to="/admin/ordertList">Orders</Link> */}
+        </li>
+      ) : (
+        <li>
+          <Link to="/profile">{userInfo && userInfo.name}</Link>
         </li>
       )}
-      <li>
-        Hello <Link to="/profile">{userInfo && userInfo.name}</Link>
-      </li>
       <li>
         <a href="#!" onClick={onLogout}>
           <span className="hide-sm"> Logout</span>

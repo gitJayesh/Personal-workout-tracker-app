@@ -4,6 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   workoutListReducer,
   workoutDetailsReducer,
+  workoutDeleteReducer,
+  workoutCreateReducer,
+  workoutUpdateReducer,
 } from "./reducers/workoutReducers";
 import {
   userLoginReducer,
@@ -25,6 +28,9 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   userUpdate: userUpdateReducer,
+  workoutDelete: workoutDeleteReducer,
+  workoutCreate: workoutCreateReducer,
+  workoutUpdate: workoutUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

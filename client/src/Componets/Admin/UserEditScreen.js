@@ -5,6 +5,7 @@ import { getUserDetails, updateUser } from "../../action/userAction";
 import { USER_UPDATE_RESET } from "../../constants/userConstants";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const UserEditScreen = () => {
   const [name, setName] = useState("");
@@ -58,35 +59,39 @@ const UserEditScreen = () => {
   };
 
   return (
-    <div className="form-container forms">
-      <h1>
-        Update <span className="text-primary">Profile</span>
-      </h1>
-      {loadingUpdate && <h3>Loading</h3>}
-      {errorUpdate && <h3>{errorUpdate}</h3>}
-      {error && <h3>{error}</h3>}
-      {/* {success && <h3>Updated Successfully</h3>} */}
-      {loading && <h3>Loading</h3>}
-      <form onSubmit={submitForm}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        {/* <div className="form-group">
+    <>
+      <Link to="/admin/userlist" className="btn btn-light my-3">
+        Go Back
+      </Link>
+      <div className="form-container forms">
+        <h1>
+          Update <span className="text-primary">Profile</span>
+        </h1>
+        {loadingUpdate && <h3>Loading</h3>}
+        {errorUpdate && <h3>{errorUpdate}</h3>}
+        {error && <h3>{error}</h3>}
+        {/* {success && <h3>Updated Successfully</h3>} */}
+        {loading && <h3>Loading</h3>}
+        <form onSubmit={submitForm}>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          {/* <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -96,22 +101,23 @@ const UserEditScreen = () => {
             minLength="6"
           />
         </div> */}
-        <div className="form-group">
-          <label htmlFor="checkbox">isAdmin</label>
+          <div className="form-group">
+            <label htmlFor="checkbox">isAdmin</label>
+            <input
+              type="checkbox"
+              name="isAdmin"
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
+            />
+          </div>
           <input
-            type="checkbox"
-            name="isAdmin"
-            checked={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.checked)}
+            type="submit"
+            value="Update"
+            className="btn btn-primary btn-block"
           />
-        </div>
-        <input
-          type="submit"
-          value="Update"
-          className="btn btn-primary btn-block"
-        />
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 
